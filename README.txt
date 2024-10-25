@@ -1,48 +1,28 @@
-Este código implementa una solución para el problema de las 8 reinas, que consiste en colocar 8 reinas 
-en un tablero de ajedrez de 8x8 de manera que ninguna reina pueda atacar a otra, es decir, no pueden 
-estar en la misma fila, columna o diagonal.
+This code implements a solution for the 8 queens problem, which involves placing 8 queens on an 8x8 chessboard so that no queen can attack another. This means they cannot share the same row, column, or diagonal.
 
-Descripción detallada del código:
+Detailed Code Description:
 
-crearTablero:
-Crea un tablero de 8x8 lleno de ceros (0), y coloca un 1 en las posiciones dadas por un conjunto 
-de coordenadas (filas y columnas) que representan la posición de las reinas.
+createBoard: Creates an 8x8 board filled with zeros (0) and places a 1 in positions given by a set of coordinates (rows and columns) representing the queens' positions.
 
-agregarSolucion:
-Dada una lista de soluciones (cada solución es un tablero), agrega una nueva solución a la lista. 
-Esto se realiza reservando más espacio para la nueva solución y copiando las soluciones previas 
-a una nueva lista con más capacidad.
+addSolution: Given a list of solutions (each solution is a board), it adds a new solution to the list. This is done by allocating more space for the new solution and copying the previous solutions to a new list with more capacity.
 
-eliminarSolucion:
-Elimina una solución de la lista de soluciones, excluyendo la solución en la posición indicada. 
-Se crea una nueva lista sin la solución eliminada y se libera la memoria de la lista anterior.
+removeSolution: Removes a solution from the solutions list, excluding the solution at the specified position. It creates a new list without the removed solution and releases the memory of the previous list.
 
-imprimir:
-Imprime un tablero de 8x8 en consola, mostrando los 1s (que representan las reinas) y los 0s.
+print: Prints an 8x8 board to the console, showing the 1s (representing the queens) and the 0s.
 
-imprimirSoluciones:
-Imprime todas las soluciones almacenadas (tableros) en la lista de soluciones.
+printSolutions: Prints all stored solutions (boards) in the solutions list.
 
-verificarHorizontal, verificarVertical y verificarDiagonal:
-Estas funciones verifican si en el tablero hay más de una reina en la misma fila, columna o 
-diagonal, respectivamente. Devuelven 1 si la regla se cumple (no hay conflictos) y 0 si hay conflictos.
+checkHorizontal, checkVertical, and checkDiagonal: These functions check if there is more than one queen in the same row, column, or diagonal, respectively. They return 1 if the rule is met (no conflicts) and 0 if there are conflicts.
 
-Flujo del programa en main:
+Program Flow in main:
 
--Se inicializan variables para almacenar las posiciones de las reinas y se crean las estructuras 
-necesarias para almacenar los tableros.
+	Variables are initialized to store the queens' positions, and the necessary structures are created to store the boards.
+	All possible combinations of positions for the 8 queens on the board are generated. For each combination, a board is created and added to the solutions list.
+	Solutions are printed.
+	Solutions are filtered, removing those that do not meet the restrictions:
+	First, solutions with more than one queen in the same row are removed (horizontal check).
+	Next, solutions with more than one queen in the same column are removed (vertical check).
+	Finally, solutions with more than one queen in the same diagonal are removed (diagonal check).
+	The solutions that meet all the 8 queens problem restrictions are printed.
 
--Se generan todas las posibles combinaciones de posiciones para las 8 reinas en el tablero. Por cada combinación, se 
-crea un tablero y se agrega a la lista de soluciones.
-
--Se imprimen las soluciones.
-
--Se filtran las soluciones, eliminando aquellas que no cumplen con las restricciones:
-	Primero, se eliminan las soluciones que tienen más de una reina en la misma fila (verificación horizontal).
-	Luego, se eliminan las soluciones que tienen más de una reina en la misma columna (verificación vertical).
-	Finalmente, se eliminan las soluciones que tienen más de una reina en la misma diagonal (verificación diagonal).
-	Se imprimen las soluciones que cumplen con todas las restricciones del problema de las 8 reinas.
-
-Resumen:
-El código busca todas las posibles disposiciones de 8 reinas en un tablero y luego filtra las 
-que cumplen con las restricciones de no compartir filas, columnas o diagonales, mostrando las soluciones válidas.
+Summary: The code seeks all possible arrangements of 8 queens on a board and then filters out those that do not meet the row, column, or diagonal restrictions, displaying only the valid solutions.
