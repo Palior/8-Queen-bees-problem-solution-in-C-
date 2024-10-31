@@ -28,7 +28,7 @@ int ** crearTablero(int ** posiciones){
 /*
 Función que agrega un elmento a una lista de elementos
 Entrada: El conjunto de elementos a donde debo agregar el nuevo elemento
-				(Cada elemento es una matriz de enteros, por lo que debe ser una lista de matrices)
+			(Cada elemento es una matriz de enteros, por lo que debe ser una lista de matrices)
 			La cantidad de elementos que posee este conjunto (Se pasa por referencia)
 			El nuevo elemento a agregar (Una matriz de enteros)
 Salida: Un nuevo conjunto de elementos
@@ -308,7 +308,7 @@ int main(){
 					posX4reina = posX3reina;
 				}
 				while((posX4reina < 8) && (posY4reina < 8)){
-					// Se setean las posiciones de la cuarta reina
+					// Se setean las posiciones de la quinta reina
 					if(posY4reina == 7){
 						posY5reina = 0;
 						posX5reina = posX4reina + 1;
@@ -318,7 +318,7 @@ int main(){
 						posX5reina = posX4reina;
 					}	
 					while((posX5reina < 8) && (posY5reina < 8)){
-						// Se setean las posiciones de la cuarta reina
+						// Se setean las posiciones de la sexta reina
 						if(posY5reina == 7){
 							posY6reina = 0;
 							posX6reina = posX6reina + 1;
@@ -328,7 +328,7 @@ int main(){
 							posX6reina = posX5reina;
 						}
 						while((posX6reina < 8) && (posY6reina < 8)){
-							// Se setean las posiciones de la cuarta reina
+							// Se setean las posiciones de la septima reina
 							if(posY6reina == 7){
 								posY7reina = 0;
 								posX7reina = posX7reina + 1;
@@ -338,7 +338,7 @@ int main(){
 								posX7reina = posX6reina;
 							}	
 							while((posX7reina < 8) && (posY7reina < 8)){
-								// Se setean las posiciones de la cuarta reina
+								// Se setean las posiciones de la octava reina
 								if(posY6reina == 7){
 									posY7reina = 0;
 									posX7reina = posX7reina + 1;
