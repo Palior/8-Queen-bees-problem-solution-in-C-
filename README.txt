@@ -1,28 +1,56 @@
-This code implements a solution for the 8 queens problem, which involves placing 8 queens on an 8x8 chessboard so that no queen can attack another. This means they cannot share the same row, column, or diagonal.
+Eight Queens Problem Solver
 
-Detailed Code Description:
+This C program solves the classic Eight Queens problem, which places eight queens on an 8x8 chessboard in such a way 
+that no two queens threaten each other. This means that no two queens share the same row, column, or diagonal.
 
-createBoard: Creates an 8x8 board filled with zeros (0) and places a 1 in positions given by a set of coordinates (rows and columns) representing the queens' positions.
+Problem Overview
 
-addSolution: Given a list of solutions (each solution is a board), it adds a new solution to the list. This is done by allocating more space for the new solution and copying the previous solutions to a new list with more capacity.
+The Eight Queens problem is a fundamental example in combinatorial problems and backtracking algorithms. 
+The challenge is to find all possible arrangements of eight queens on an 8x8 board where none of the queens can attack one another.
 
-removeSolution: Removes a solution from the solutions list, excluding the solution at the specified position. It creates a new list without the removed solution and releases the memory of the previous list.
+Solution Approach
 
-print: Prints an 8x8 board to the console, showing the 1s (representing the queens) and the 0s.
+This program uses a backtracking algorithm to explore potential solutions. It tries to place queens in each column and checks 
+if each placement is safe. If a safe placement is found, the program places the queen and moves to the next column. If no safe 
+positions exist, it backtracks to the previous column and tries a new position.
 
-printSolutions: Prints all stored solutions (boards) in the solutions list.
+Features
 
-checkHorizontal, checkVertical, and checkDiagonal: These functions check if there is more than one queen in the same row, column, or diagonal, respectively. They return 1 if the rule is met (no conflicts) and 0 if there are conflicts.
+	Board Initialization: Creates an empty 8x8 board.
+	Solution Display: Shows each solution individually and waits for the user to press Enter before showing the next one.
+	Safety Check: Validates if a queen placement is safe.
+	Memory Management: Frees up allocated memory after execution.that do not meet the row, column, or diagonal restrictions, displaying only the valid solutions.
 
-Program Flow in main:
+Functions
 
-	Variables are initialized to store the queens' positions, and the necessary structures are created to store the boards.
-	All possible combinations of positions for the 8 queens on the board are generated. For each combination, a board is created and added to the solutions list.
-	Solutions are printed.
-	Solutions are filtered, removing those that do not meet the restrictions:
-	First, solutions with more than one queen in the same row are removed (horizontal check).
-	Next, solutions with more than one queen in the same column are removed (vertical check).
-	Finally, solutions with more than one queen in the same diagonal are removed (diagonal check).
-	The solutions that meet all the 8 queens problem restrictions are printed.
+int **createBoard()
+	Description: Creates and initializes an empty 8x8 chessboard.
+	Return: A pointer to a dynamically allocated 2D array representing the chessboard.
 
-Summary: The code seeks all possible arrangements of 8 queens on a board and then filters out those that do not meet the row, column, or diagonal restrictions, displaying only the valid solutions.
+void printBoard(int **board)
+	Description: Prints the current state of the board to the console.
+	Parameters: board and the current board state.
+	Additional Feature: Pauses after each solution, waiting for the user to press Enter to proceed.
+
+int isSafe(int **board, int row, int col)
+	Description: Checks if placing a queen at board[row][col] is safe, meaning it won’t be attacked by any other queen.
+	Parameters: 
+		-board and The current board state.
+		-row, col and the proposed position for the queen.
+	Return: 1 if it’s safe, 0 otherwise.
+
+int solve(int **board, int col)
+	Description: Uses a recursive backtracking approach to place queens on the board.
+	Parameters:
+		- board and the current board state.
+		- col and the column where the program attempts to place a queen.
+	Return: 1 if a solution is found, 0 if not.
+	Backtracking: If no safe placement is possible, removes the last-placed queen and tries a new position.
+
+int main()
+	Description: Initializes the chessboard, calls the solve function to begin the solution search, and releases allocated memory.
+	Flow:
+		- Creates the board with createBoard.
+		- Calls solve to find solutions.
+		- If no solution exists, outputs a message.
+		- Frees the allocated memory for the board.
